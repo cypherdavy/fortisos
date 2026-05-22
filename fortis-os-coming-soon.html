@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fortis OS — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #ff2244;
+    --red-dim: rgba(255,34,68,0.12);
+    --bg: #080305;
+    --border: rgba(255,34,68,0.18);
+    --text: #ffd0d8;
+    --text-muted: rgba(255,208,216,0.4);
+  }
+
+  html, body {
+    width: 100%; min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,34,68,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,34,68,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid var(--border);
+    background: var(--red-dim);
+    padding: 6px 18px;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    color: var(--red);
+    margin-bottom: 2.8rem;
+    animation: up 0.6s ease both;
+  }
+
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--red);
+    animation: blink 1.3s step-start infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(5rem, 15vw, 9.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    color: #fff;
+    animation: up 0.65s 0.08s ease both;
+  }
+  .logo span { color: var(--red); }
+
+  .divider {
+    width: 240px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    margin: 2.4rem auto;
+    animation: up 0.65s 0.16s ease both;
+  }
+
+  .coming {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    letter-spacing: 0.35em;
+    color: var(--red);
+    text-transform: uppercase;
+    animation: up 0.65s 0.24s ease both;
+  }
+
+  .sub {
+    margin-top: 1.1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    animation: up 0.65s 0.32s ease both;
+  }
+
+  .notify-section {
+    margin-top: 2.8rem;
+    width: 100%; max-width: 400px;
+    animation: up 0.65s 0.4s ease both;
+  }
+  .notify-label {
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    color: var(--text-muted); margin-bottom: 0.7rem;
+  }
+  .notify-form {
+    display: flex;
+    border: 1px solid var(--border);
+    background: rgba(255,34,68,0.05);
+  }
+  .notify-form input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--text); font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem; padding: 0.75rem 1rem;
+  }
+  .notify-form input::placeholder { color: var(--text-muted); }
+  .notify-form button {
+    background: var(--red); color: #080305;
+    border: none; cursor: pointer;
+    font-family: 'Syne', sans-serif; font-weight: 800;
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    padding: 0.75rem 1.2rem;
+    transition: opacity 0.2s;
+  }
+  .notify-form button:hover { opacity: 0.82; }
+  .notify-msg {
+    font-size: 0.7rem; color: var(--red);
+    margin-top: 0.55rem; min-height: 1em;
+  }
+
+  .footer-line {
+    position: fixed; bottom: 1.4rem; left: 0; right: 0;
+    text-align: center;
+    font-size: 0.65rem; letter-spacing: 0.18em;
+    color: var(--text-muted);
+    animation: up 0.65s 0.48s ease both;
+  }
+
+  @keyframes up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <div class="badge">
+    <div class="dot"></div>
+    CIPHER DAVY // FORTIS OS
+  </div>
+
+  <div class="logo">FORTIS<span>_OS</span></div>
+
+  <div class="divider"></div>
+
+  <div class="coming">Coming Soon</div>
+  <div class="sub">Strong. Resilient. Always&#8209;On.</div>
+
+  <div class="notify-section">
+    <div class="notify-label">// GET NOTIFIED ON LAUNCH</div>
+    <div class="notify-form">
+      <input type="email" id="email" placeholder="your@email.com" autocomplete="off">
+      <button onclick="notify()">ENLIST</button>
+    </div>
+    <div class="notify-msg" id="msg"></div>
+  </div>
+
+</main>
+
+<div class="footer-line">FORTIS — STRONG / BRAVE / POWERFUL &nbsp;·&nbsp; HETZNER INFRASTRUCTURE</div>
+
+<script>
+  function notify() {
+    const v = document.getElementById('email').value.trim();
+    const m = document.getElementById('msg');
+    if (!v || !v.includes('@')) {
+      m.style.color = '#ff6680';
+      m.textContent = '// valid email required.';
+      return;
+    }
+    m.style.color = 'var(--red)';
+    m.textContent = '// enlisted — you will be notified at launch.';
+    document.getElementById('email').value = '';
+    document.getElementById('email').disabled = true;
+  }
+  document.getElementById('email').addEventListener('keydown', e => { if (e.key === 'Enter') notify(); });
+</script>
+</body>
+</html>
